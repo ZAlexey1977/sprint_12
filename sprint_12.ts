@@ -16,8 +16,8 @@ class Goods {
 }
 
 // проверяем
-const g1 = new Goods("cucumber", 500);
-console.log(g1);
+// const g1 = new Goods("cucumber", 500);
+// console.log(g1);
 // console.log(g1._weight); // выдает ошибку - поскольку private
 
 // Task 02
@@ -25,8 +25,8 @@ console.log(g1);
 // Название свойства weight.
 
 // проверяем
-const g2 = new Goods("tomato", 1500);
-console.log(g2.weight); // должно работать
+// const g2 = new Goods("tomato", 1500);
+// console.log(g2.weight); // должно работать
 
 // Task 03
 // В коде Goods есть проблема. Например можно установить отрицательный вес: new Goods ('tomato', -140).
@@ -36,14 +36,23 @@ console.log(g2.weight); // должно работать
 // а для свойства _weight создадим сеттер weight, который принимает число, и если оно больше нуля то присваивает _weight,
 // если меньше - то присваивает _weigth нуль.
 
-// тут пишем класс
+class Goods_03 {
+  public title: string;
+  private _weight: number = 0;
+  constructor(title: string) {
+    this.title = title;
+  }
+  public set weight(num: number) {
+    num > 0 ? (this._weight = num) : (this._weight = 0);
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const g3 = new Goods_03('tomato');
-// g3.weight = 200;
-// console.log(g3);
-// g3.weight = -9;
-// console.log(g3);
+const g3 = new Goods_03("tomato");
+g3.weight = 200;
+console.log(g3);
+g3.weight = -9;
+console.log(g3);
 
 // Task 04
 // Согласитесь, применять отдельно конструктор, и отдельно сеттер для одного свойства - просто не удобно.
@@ -61,18 +70,18 @@ class Goods_04 {
 
   constructor(t: string, w: number) {
     this.title = t;
-    this.weight(w);
+    this.weight = w;
   }
 
-  public weight(n: number) {
+  public set weight(n: number) {
     if (n >= 0) this._weigth = n;
     else this._weigth = 0;
   }
 }
 
 // Для проверки кода снимите комментарий ниже
-// const g4 = new Goods_04('tomato', -150);
-// console.log(g4);
+const g4 = new Goods_04("tomato", -150);
+console.log(g4);
 
 // Task 05
 // Многие программисты критикую идеологию применения сеттера в конструкторе. Давайте напишем код по другому.

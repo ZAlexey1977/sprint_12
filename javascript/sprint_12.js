@@ -14,15 +14,15 @@ class Goods {
     }
 }
 // проверяем
-const g1 = new Goods("cucumber", 500);
-console.log(g1);
+// const g1 = new Goods("cucumber", 500);
+// console.log(g1);
 // console.log(g1._weight); // выдает ошибку - поскольку private
 // Task 02
 // Допишем геттер в класс Goods. Допишите в предыдущий класс метод геттер для получения свойства _weight из объекта.
 // Название свойства weight.
 // проверяем
-const g2 = new Goods("tomato", 1500);
-console.log(g2.weight); // должно работать
+// const g2 = new Goods("tomato", 1500);
+// console.log(g2.weight); // должно работать
 // Task 03
 // В коде Goods есть проблема. Например можно установить отрицательный вес: new Goods ('tomato', -140).
 // С первой стороны бред, с другой стороны применение такого товара в общей системе учета - создаст проблемы при комплектации машин.
@@ -30,13 +30,22 @@ console.log(g2.weight); // должно работать
 // свойство title - string и _weight (private), number равное нулю. В конструкторе будем задавать только title,
 // а для свойства _weight создадим сеттер weight, который принимает число, и если оно больше нуля то присваивает _weight,
 // если меньше - то присваивает _weigth нуль.
-// тут пишем класс
+class Goods_03 {
+    title;
+    _weight = 0;
+    constructor(title) {
+        this.title = title;
+    }
+    set weight(num) {
+        num > 0 ? (this._weight = num) : (this._weight = 0);
+    }
+}
 // Для проверки кода снимите комментарий ниже
-// const g3 = new Goods_03('tomato');
-// g3.weight = 200;
-// console.log(g3);
-// g3.weight = -9;
-// console.log(g3);
+const g3 = new Goods_03("tomato");
+g3.weight = 200;
+console.log(g3);
+g3.weight = -9;
+console.log(g3);
 // Task 04
 // Согласитесь, применять отдельно конструктор, и отдельно сеттер для одного свойства - просто не удобно.
 // Изучите класс Goods_04 и его работу. В данном случае мы имеем дело с методом weigth,
@@ -50,9 +59,9 @@ class Goods_04 {
     _weigth = 0;
     constructor(t, w) {
         this.title = t;
-        this.weight(w);
+        this.weight = w;
     }
-    weight(n) {
+    set weight(n) {
         if (n >= 0)
             this._weigth = n;
         else
@@ -60,8 +69,8 @@ class Goods_04 {
     }
 }
 // Для проверки кода снимите комментарий ниже
-// const g4 = new Goods_04('tomato', -150);
-// console.log(g4);
+const g4 = new Goods_04("tomato", -150);
+console.log(g4);
 // Task 05
 // Многие программисты критикую идеологию применения сеттера в конструкторе. Давайте напишем код по другому.
 // Изучите, как работает класс Goods_05.
