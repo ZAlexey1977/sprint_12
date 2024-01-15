@@ -41,11 +41,11 @@ class Goods_03 {
     }
 }
 // Для проверки кода снимите комментарий ниже
-const g3 = new Goods_03("tomato");
-g3.weight = 200;
-console.log(g3);
-g3.weight = -9;
-console.log(g3);
+// const g3 = new Goods_03("tomato");
+// g3.weight = 200;
+// console.log(g3);
+// g3.weight = -9;
+// console.log(g3);
 // Task 04
 // Согласитесь, применять отдельно конструктор, и отдельно сеттер для одного свойства - просто не удобно.
 // Изучите класс Goods_04 и его работу. В данном случае мы имеем дело с методом weigth,
@@ -69,8 +69,8 @@ class Goods_04 {
     }
 }
 // Для проверки кода снимите комментарий ниже
-const g4 = new Goods_04("tomato", -150);
-console.log(g4);
+// const g4 = new Goods_04("tomato", -150);
+// console.log(g4);
 // Task 05
 // Многие программисты критикую идеологию применения сеттера в конструкторе. Давайте напишем код по другому.
 // Изучите, как работает класс Goods_05.
@@ -94,9 +94,9 @@ class Goods_05 {
     }
 }
 // Для проверки кода снимите комментарий ниже
-// const g51 = new Goods_05('tomato', -600);
+// const g51 = new Goods_05("tomato", -600);
 // console.log(g51);
-// const g52 = new Goods_05('tomato', 700);
+// const g52 = new Goods_05("tomato", 700);
 // console.log(g52);
 // g52.weight = 888;
 // console.log(g52);
@@ -107,11 +107,28 @@ class Goods_05 {
 // Создайте сеттеры name, lastName. Оба сеттера должны перед присвоением значений очищать от пробелов по краям
 // и переводить значения в нижний регистр. реализуйте конструктор, который применяет данные сеттеры для установки значений.
 // Напишите геттеры name, lastName, которые возвращают значения _name, _lastName.
-// тут пишем класс
+class User {
+    _name = "";
+    _lastName = "";
+    constructor(name, lastName) {
+        this.n(name), (this._lastName = lastName);
+    }
+    n(n) {
+        return (this._name = n);
+    }
+    //   public get lastName(): string {
+    //     return this._lastName;
+    //   }
+    set name(n) {
+        n = n.trim().toLocaleLowerCase();
+        this.n(n);
+    }
+}
 // Для проверки кода снимите комментарий ниже
-// const u = new User(' ОлЕг ', ' НатягниКовдру   ');
-// console.log(u);
-// console.log(u.name);
+const u = new User(" ОлЕг ", " НатягниКовдру   ");
+console.log(u);
+u.name = "Alex";
+console.log(u.name);
 // u.lastName = '     нЕпийвода ';
 // console.log(u);
 // console.log(u.lastName);
