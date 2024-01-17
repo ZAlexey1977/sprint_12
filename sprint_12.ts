@@ -129,19 +129,29 @@ class User {
   private _name: string = "";
   private _lastName: string = "";
   constructor(name: string, lastName: string) {
-    this.n(name), (this._lastName = lastName);
+    (this.name = name), (this.lastName = lastName);
   }
 
   public n(n: string): string {
     return (this._name = n);
   }
-  //   public get lastName(): string {
-  //     return this._lastName;
-  //   }
-
   public set name(n: string) {
-    n = n.trim().toLocaleLowerCase();
+    n = n.trim().toLowerCase();
     this.n(n);
+  }
+  public get name(): string {
+    return this._name;
+  }
+
+  public l(l: string): string {
+    return (this._lastName = l);
+  }
+  public set lastName(l: string) {
+    l = l.trim().toLowerCase();
+    this.l(l);
+  }
+  public get lastName(): string {
+    return this._lastName;
   }
 }
 
@@ -150,9 +160,9 @@ const u = new User(" ОлЕг ", " НатягниКовдру   ");
 console.log(u);
 u.name = "Alex";
 console.log(u.name);
-// u.lastName = '     нЕпийвода ';
-// console.log(u);
-// console.log(u.lastName);
+u.lastName = "     нЕпийвода ";
+console.log(u);
+console.log(u.lastName);
 
 // Task 7.
 // Напишите класс User_07, который содержит два свойства: _age, число private равное по умолчанию 0 и _adult private,
@@ -161,7 +171,19 @@ console.log(u.name);
 // Если возраст (_age) больше 16 mо _adult true. Во всех остальных случаях - false. Напишите геттеры age, adult.
 // Реализуйте установку age через конструктор с помощью сеттера.
 
-// тут пишем класс
+class User_07 {
+  private _age: number = 0;
+  private _adult: boolean = false;
+
+  public set age(num: number) {
+    if (num > 0 && num < 130) {
+      this._age = num;
+      this._age > 16 ? (this._adult = true) : (this._adult = false);
+    } else {
+      this._age = 0;
+    }
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
 // const u7 = new User_07(55);
