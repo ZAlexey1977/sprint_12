@@ -156,13 +156,13 @@ class User {
 }
 
 // Для проверки кода снимите комментарий ниже
-const u = new User(" ОлЕг ", " НатягниКовдру   ");
-console.log(u);
-u.name = "Alex";
-console.log(u.name);
-u.lastName = "     нЕпийвода ";
-console.log(u);
-console.log(u.lastName);
+// const u = new User(" ОлЕг ", " НатягниКовдру   ");
+// console.log(u);
+// u.name = "Alex";
+// console.log(u.name);
+// u.lastName = "     нЕпийвода ";
+// console.log(u);
+// console.log(u.lastName);
 
 // Task 7.
 // Напишите класс User_07, который содержит два свойства: _age, число private равное по умолчанию 0 и _adult private,
@@ -207,38 +207,46 @@ class User_07 {
 }
 
 // Для проверки кода снимите комментарий ниже
-const u7 = new User_07(55);
-console.log(u7);
+// const u7 = new User_07(55);
+// console.log(u7);
 
-u7.age = 12;
-console.log(u7);
+// u7.age = 12;
+// console.log(u7);
 
-console.log(u7.age);
-console.log(u7.adult);
+// console.log(u7.age);
+// console.log(u7.adult);
 
 // Task 08
 // Создайте класс Test содержащий private свойство _n равное нулю. Создайте сеттер n который задает данное свойство и геттер,
 // для получения данного свойства.
 
-// тут пишем класс
+class Test {
+  private _n: number = 0;
+
+  public get n(): number {
+    return this._n;
+  }
+  public set n(num: number) {
+    this._n = num;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const t8 = new Test;
-// t8.n = 99;
-// console.log(t8);
-// console.log(t8.n);
+const t8 = new Test();
+t8.n = 99;
+console.log(t8);
+console.log(t8.n);
 
 // Task 09
 // Создайте класс Test_09 наследник класса Test. Запустите проверки.
-
-// тут пишем класс
+class Test_09 extends Test {}
 
 // Для проверки кода снимите комментарий ниже
 
-// const t9 = new Test_09();
-// t9.n = 199; // сеттер работает в классе наследнике
-// console.log(t9);
-// console.log(t9.n); // геттер работает в классе наследнике
+const t9 = new Test_09();
+t9.n = 199; // сеттер работает в классе наследнике
+console.log(t9);
+console.log(t9.n); // геттер работает в классе наследнике
 
 // Task 10
 // Создадим класc Test_10, наследник класса Test. Перезапишем метод сеттер n следующим образом - если число
