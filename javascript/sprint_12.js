@@ -151,23 +151,40 @@ console.log(u.lastName);
 class User_07 {
     _age = 0;
     _adult = false;
+    constructor(age) {
+        this.a(age);
+        this.bool(age);
+    }
+    get age() {
+        return this._age;
+    }
+    get adult() {
+        return this._adult;
+    }
+    a(age) {
+        return (this._age = age);
+    }
+    bool(num) {
+        return num > 16 ? (this._adult = true) : (this._adult = false);
+    }
     set age(num) {
         if (num > 0 && num < 130) {
             this._age = num;
-            this._age > 16 ? (this._adult = true) : (this._adult = false);
         }
         else {
             this._age = 0;
         }
+        this.a(num);
+        this.bool(num);
     }
 }
 // Для проверки кода снимите комментарий ниже
-// const u7 = new User_07(55);
-// console.log(u7);
-// u7.age = 12;
-// console.log(u7);
-// console.log(u7.age);
-// console.log(u7.adult);
+const u7 = new User_07(55);
+console.log(u7);
+u7.age = 12;
+console.log(u7);
+console.log(u7.age);
+console.log(u7.adult);
 // Task 08
 // Создайте класс Test содержащий private свойство _n равное нулю. Создайте сеттер n который задает данное свойство и геттер,
 // для получения данного свойства.
