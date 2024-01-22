@@ -295,11 +295,11 @@ class Test_11 extends Test {
   }
 }
 
-const t11 = new Test_11();
-t11.n = 555; // даже не дойдя до проверки мы получаем ошибку в консоли. Дальше проверка невозможна.
-// Верните комментарий и переходим к следующему заданию.
-console.log(t11);
-console.log(t11.n); // проверим сработал ли геттер из класса родителя
+// const t11 = new Test_11();
+// t11.n = 555; // даже не дойдя до проверки мы получаем ошибку в консоли. Дальше проверка невозможна.
+// // Верните комментарий и переходим к следующему заданию.
+// console.log(t11);
+// console.log(t11.n); // проверим сработал ли геттер из класса родителя
 
 // Task 13
 // Итак, при перезаписи геттера или сеттера - не важно, нужно перезаписывать и сеттер, геттер.
@@ -313,13 +313,52 @@ console.log(t11.n); // проверим сработал ли геттер из 
 // метод получает строку как аргумент и возращает строку с удаленными пробелами по краям и приведенную к нижнему регистру.
 // С помощью данного метода задайте в конструкторе свойства _email, _password, _passwordRepeat.
 
-// тут пишем класс
+class SignupForm {
+  protected _email: string;
+  protected _password: string;
+  protected _passwordRepeat: string;
+
+  constructor(email: string, password: string, passwordRepeat: string) {
+    this._email = this.prepareString(email);
+    this._password = this.prepareString(password);
+    this._passwordRepeat = this.prepareString(passwordRepeat);
+  }
+
+  private prepareString(str: string): string {
+    str = str.trim().toLowerCase();
+    return str;
+  }
+
+  public get email(): string {
+    return this._email;
+  }
+
+  public get password(): string {
+    return this._password;
+  }
+
+  public get passwordRepeat(): string {
+    return this._passwordRepeat;
+  }
+
+  public set email(str: string) {
+    this.prepareString(str);
+  }
+
+  public set password(str: string) {
+    this.prepareString(str);
+  }
+
+  public set passwopdRepeat(str: string) {
+    this.prepareString(str);
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
 
-// const sf = new SignupForm(' hello@maiL.ua ', '12345Bb', '12345Bb');
-// console.log(sf);
-// console.log(sf.email);
+const sf = new SignupForm(" hello@maiL.ua ", "12345Bb", "12345Bb");
+console.log(sf);
+console.log(sf.email);
 
 // Task 15
 // В классе SignupForm мы допустили ошибку - делать toLowerCase паролю не самая лучшая идея.
