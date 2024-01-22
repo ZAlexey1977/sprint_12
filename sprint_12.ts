@@ -365,9 +365,15 @@ console.log(sf.email);
 // Давайте сделаем класс SignupForm_15, который наследуется от SignupForm и исправим конструктор,
 // и изменим конструктор - в нем мы будем для email применять prepareString, а для password и passwordRepeat будем делать только операцию trim.
 
-// тут пишем класс
+class SignupForm_15 extends SignupForm {
+  constructor(email: string, password: string, passwordRepeat: string) {
+    super(email, password, passwordRepeat);
+    this._password = password.trim();
+    this._passwordRepeat = passwordRepeat.trim();
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const sf15 = new SignupForm_15(' hello@maiL.ua ', '12345Bb', '12345Bb');
-// console.log(sf15);
-// console.log(sf15.email);
+const sf15 = new SignupForm_15(" hello@maiL.ua ", "12345Bb", "12345Bb");
+console.log(sf15);
+console.log(sf15.email);
